@@ -15,7 +15,6 @@ Plug 'https://github.com/preservim/nerdtree'
 Plug 'https://github.com/rafi/awesome-vim-colorschemes'
 Plug 'https://github.com/joshdick/onedark.vim'
 Plug 'https://github.com/ryanoasis/vim-devicons'
-Plug 'https://github.com/tc50cal/vim-terminal'
 Plug 'https://github.com/neoclide/coc.nvim'
 Plug 'https://github.com/nvim-treesitter/nvim-treesitter'
 
