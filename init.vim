@@ -15,9 +15,10 @@ Plug 'https://github.com/preservim/nerdtree'
 Plug 'https://github.com/rafi/awesome-vim-colorschemes'
 Plug 'https://github.com/joshdick/onedark.vim'
 Plug 'https://github.com/ryanoasis/vim-devicons'
-Plug 'https://github.com/tc50cal/vim-terminal'
 Plug 'https://github.com/neoclide/coc.nvim'
 Plug 'https://github.com/nvim-treesitter/nvim-treesitter'
+Plug 'https://github.com/jiangmiao/auto-pairs'
+
 
 call plug#end()
 
@@ -37,8 +38,10 @@ nnoremap <C-y> :TerminalVSplit bash<CR>\r
 nnoremap <C-w> :wq<CR>
 nnoremap <C-s> :w<CR>
 nnoremap <C-q> :q!<CR>
+nnoremap ff <Esc>:NERDTreeFocus<CR>
 
 inoremap <C-f> <Esc>:NERDTreeToggle<CR>
+inoremap ff <Esc>:NERDTreeFocus<CR>
 inoremap <C-t> <Esc>:TerminalSplit bash<CR>\r
 inoremap <C-y> <Esc>:TerminalVSplit bash<CR>\r
 inoremap <C-z> <Esc>:undo<CR>i<CR>
@@ -46,6 +49,7 @@ inoremap <C-Space> <Esc>
 inoremap <C-w> <Esc>:wq<CR>i
 inoremap <C-s> <Esc>:w<CR>i
 inoremap <C-q> <Esc>:q!<CR>i
+inoremap vv <Esc>v
 
 let g:NERDTreeDirArrowExpandable=">"
 let g:NERDTreeDirArrowCollapsible="v"
