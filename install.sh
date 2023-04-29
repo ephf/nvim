@@ -2,6 +2,7 @@ apt install nodejs
 apt install npm
 apt install python
 apt install pip
+apt install fuse
 
 pip install --upgrade pynvim
 npm i -g yarn
