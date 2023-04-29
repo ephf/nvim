@@ -1,8 +1,9 @@
-apt install nodejs
-apt install npm
-apt install python
-apt install pip
-apt install fuse
+apt install nodejs -y
+apt install npm -y
+apt install python -y
+apt install pip -y
+apt install fuse -y
+apt install vim-gtk -y
 
 pip install --upgrade pynvim
 npm i -g yarn
@@ -16,6 +17,4 @@ sh -c 'curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.
        https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
 
 nv init.vim
-read -p "Run :PlugInstall then press [Enter] to continue"
-
 cd plugged/coc.nvim && yarn install
