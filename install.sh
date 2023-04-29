@@ -5,6 +5,7 @@ apt install pip
 
 pip install --upgrade pynvim
 npm i -g yarn
+npm i -g node
 
 curl -LO https://github.com/neovim/neovim/releases/latest/download/nvim.appimage
 chmod u+x nvim.appimage
