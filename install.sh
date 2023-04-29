@@ -8,6 +8,7 @@ apt install vim-gtk -y
 pip install --upgrade pynvim
 npm i -g yarn
 npm i -g node
+yarn global add npm
 
 curl -LO https://github.com/neovim/neovim/releases/latest/download/nvim.appimage
 chmod u+x nvim.appimage

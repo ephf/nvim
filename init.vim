@@ -24,7 +24,7 @@ call plug#end()
 
 lua << EOF
 require'nvim-treesitter.configs'.setup {
-	ensure_installed = { "vim", "c" },
+	ensure_installed = { "vim", "c", "javascript" },
 	sync_install = false,
 	highlight = {
     	enable = true,
