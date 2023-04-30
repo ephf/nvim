@@ -40,6 +40,7 @@ nnoremap <C-w> :wq<CR>
 nnoremap <C-s> :w<CR>
 nnoremap <C-q> :q!<CR>
 nnoremap zz <Esc>:NERDTreeFocus<CR>
+nnoremap r :TermExec cmd="make run"<CR>
 
 inoremap <C-f> <Esc>:NERDTreeToggle<CR>
 inoremap zz <Esc>:NERDTreeFocus<CR>
