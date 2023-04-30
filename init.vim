@@ -39,10 +39,10 @@ nnoremap <C-t> :ToggleTerm<CR><C-\><C-n>i
 nnoremap <C-w> :wq<CR>
 nnoremap <C-s> :w<CR>
 nnoremap <C-q> :q!<CR>
-nnoremap ff <Esc>:NERDTreeFocus<CR>
+nnoremap zz <Esc>:NERDTreeFocus<CR>
 
 inoremap <C-f> <Esc>:NERDTreeToggle<CR>
-inoremap ff <Esc>:NERDTreeFocus<CR>
+inoremap zz <Esc>:NERDTreeFocus<CR>
 inoremap <C-t> <Esc>:ToggleTerm<CR><C-\><C-n>i
 inoremap <C-z> <Esc>:undo<CR>i<CR>
 inoremap <C-Space> <Esc>
