@@ -18,7 +18,7 @@ Plug 'https://github.com/ryanoasis/vim-devicons'
 Plug 'https://github.com/neoclide/coc.nvim'
 Plug 'https://github.com/nvim-treesitter/nvim-treesitter'
 Plug 'https://github.com/jiangmiao/auto-pairs'
-
+Plug 'https://github.com/akinsho/toggleterm.nvim'
 
 call plug#end()
 
@@ -30,11 +30,12 @@ require'nvim-treesitter.configs'.setup {
     	enable = true,
 	},
 }
+
+require'toggleterm'.setup()
 EOF
 
 nnoremap <C-f> :NERDTreeToggle<CR>
-nnoremap <C-t> :TerminalSplit bash<CR>\r
-nnoremap <C-y> :TerminalVSplit bash<CR>\r
+nnoremap <C-t> :ToggleTerm<CR><C-\><C-n>i
 nnoremap <C-w> :wq<CR>
 nnoremap <C-s> :w<CR>
 nnoremap <C-q> :q!<CR>
@@ -42,8 +43,7 @@ nnoremap ff <Esc>:NERDTreeFocus<CR>
 
 inoremap <C-f> <Esc>:NERDTreeToggle<CR>
 inoremap ff <Esc>:NERDTreeFocus<CR>
-inoremap <C-t> <Esc>:TerminalSplit bash<CR>\r
-inoremap <C-y> <Esc>:TerminalVSplit bash<CR>\r
+inoremap <C-t> <Esc>:ToggleTerm<CR><C-\><C-n>i
 inoremap <C-z> <Esc>:undo<CR>i<CR>
 inoremap <C-Space> <Esc>
 inoremap <C-w> <Esc>:wq<CR>i
@@ -51,8 +51,13 @@ inoremap <C-s> <Esc>:w<CR>i
 inoremap <C-q> <Esc>:q!<CR>i
 inoremap vv <Esc>v
 
+tnoremap <C-Space> <C-\><C-n>
+tnoremap <C-q> <C-\><C-n>:ToggleTerm<CR>
+
 let g:NERDTreeDirArrowExpandable=">"
 let g:NERDTreeDirArrowCollapsible="v"
+
+let g:airline_powerline_fonts = 1
 
 :colorscheme onedark
 
