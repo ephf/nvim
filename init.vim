@@ -8,32 +8,32 @@ Plug 'nvim-lua/plenary.nvim'
 Plug 'nvim-telescope/telescope.nvim'
 
 Plug 'rebelot/kanagawa.nvim'
+Plug 'nvim-lualine/lualine.nvim'
+Plug 'nvim-tree/nvim-web-devicons'
 
-Plug 'mfussenegger/nvim-dap'
-Plug 'nvim-neotest/nvim-nio'
-Plug 'rcarriga/nvim-dap-ui'
 Plug 'williamboman/mason.nvim'
-Plug 'jay-babu/mason-nvim-dap.nvim'
+
+Plug 'angluca/quark.vim'
 
 call plug#end()
 
 se nu rnu ts=4 sw=4 ai si nohls mouse=
-colo kanagawa
+colo kanagawa-dragon
 hi Error gui=bold,underline
+hi Normal guibg=NONE
 
 nn <s-u> <c-r>
 tno <esc> <c-\><c-n>
 tno <c-w> <c-\><c-n><c-w>
 
-nn qw <c-w>w
-nn <s-q><s-w> <c-w><s-w>
-tno qw <c-\><c-n><c-w>w
-tno <s-q><s-w> <c-\><c-n><c-w><s-w>
-
 nn <nowait> j gj
 nn <nowait> k gk
 
+nn <tab> <c-w>w
+tno <tab> <c-w>w
+
 autocmd FileType typst setl spell
+autocmd FileType cpp setl filetype=c
 
 function! CheckBackspace() abort
   let col = col('.') - 1
@@ -50,48 +50,29 @@ nn <silent><nowait> gy <Plug>(coc-type-definition)
 nn fd <cmd>Telescope find_files<cr>
 nn fs <cmd>Telescope live_grep<cr>
 
+set noshowmode
+
 lua << EOF
 
-require'lspconfig'.clangd.setup { 
+require'lspconfig'.clangd.setup {}
+require'lspconfig'.tinymist.setup {
 	settings = {
-		clangd = {
-			InlayHints = { Enabled = false },
-		}
+		formatterMode = "typstyle",
+		exportPdf = "onType",
+		semanticTokens = "disable"
 	}
 }
+require'lspconfig'.vtsls.setup {}
 
 require'nvim-treesitter.configs'.setup {
-	ensure_installed = { "c", "typst" },
+	ensure_installed = { "c", "typst", "typescript" },
 	highlight = { enable = true },
 }
 
 require'mason'.setup {}
 
-local dap = require('dap')
-
-dap.adapters.codelldb = {
-	type = 'server',
-	port = '${port}',
-	executable = {
-		command = 'codelldb',
-		args = { '--port', '${port}' },
-	},
+require('lualine').setup {
+	options = { theme = 'kanagawa' }
 }
-
-dap.configurations.c = {
-	{
-			name = "Launch",
-			type = "codelldb",
-			request = "launch",
-			program = function()
-				return vim.fn.input('Path to executable: ',
-					vim.fn.getcwd() .. '/', 'file')
-			end,
-			cwd = '${workspaceFolder}',
-			runInTerminal = false,
-	},
-}
-
-require'dapui'.setup {}
 
 EOF

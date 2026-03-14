@@ -2,5 +2,6 @@
 	"inlayHint.enable": false,
 	"clangd.arguments": [
 		"--function-arg-placeholders=0"
-	]
+	],
+	"html.validate.styles": false
 }
