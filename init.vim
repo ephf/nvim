@@ -2,7 +2,7 @@ call plug#begin()
 
 Plug 'neovim/nvim-lspconfig'
 Plug 'neoclide/coc.nvim'
-Plug 'nvim-treesitter/nvim-treesitter'
+Plug 'nvim-treesitter/nvim-treesitter', { 'branch': 'master' }
 
 Plug 'nvim-lua/plenary.nvim'
 Plug 'nvim-telescope/telescope.nvim'
@@ -13,7 +13,7 @@ Plug 'nvim-tree/nvim-web-devicons'
 
 Plug 'williamboman/mason.nvim'
 
-Plug 'angluca/quark.vim'
+Plug 'ephf/quark.vim'
 
 Plug 'lewis6991/gitsigns.nvim'
 
@@ -57,15 +57,15 @@ set exrc
 
 lua << EOF
 
-require'lspconfig'.clangd.setup {}
-require'lspconfig'.tinymist.setup {
+vim.lsp.config("clangd", {})
+vim.lsp.config("tinymist", {
 	settings = {
 		formatterMode = "typstyle",
 		exportPdf = "onType",
 		semanticTokens = "disable"
 	}
-}
-require'lspconfig'.vtsls.setup {}
+})
+vim.lsp.config("vtsls", {})
 
 require'nvim-treesitter.configs'.setup {
 	ensure_installed = { "c", "typst", "typescript" },
