@@ -55,10 +55,6 @@ nn fs <cmd>Telescope live_grep<cr>
 set noshowmode
 set exrc
 
-nn gb :DapToggleBreakpoint<cr>
-nn gn :DapContinue<cr>
-nn gm :lua require("dapui").close()<cr>
-
 lua << EOF
 
 require'lspconfig'.clangd.setup {}
