@@ -17,10 +17,6 @@ Plug 'angluca/quark.vim'
 
 Plug 'lewis6991/gitsigns.nvim'
 
-Plug 'mfussenegger/nvim-dap'
-Plug 'nvim-neotest/nvim-nio'
-Plug 'rcarriga/nvim-dap-ui'
-
 call plug#end()
 
 se nu rnu ts=4 sw=4 ai si nohls mouse=
@@ -57,9 +53,11 @@ nn fd <cmd>Telescope find_files<cr>
 nn fs <cmd>Telescope live_grep<cr>
 
 set noshowmode
+set exrc
 
 nn gb :DapToggleBreakpoint<cr>
 nn gn :DapContinue<cr>
+nn gm :lua require("dapui").close()<cr>
 
 lua << EOF
 
@@ -82,27 +80,6 @@ require'mason'.setup {}
 
 require('lualine').setup {
 	options = { theme = 'kanagawa' }
-}
-
-local dap, dapui = require("dap"), require("dapui")
-
-dap.listeners.before.attach.dapui_config = function()
-  dapui.open()
-end
-dap.listeners.before.launch.dapui_config = function()
-  dapui.open()
-end
-dap.listeners.before.event_terminated.dapui_config = function()
-  dapui.close()
-end
-dap.listeners.before.event_exited.dapui_config = function()
-  dapui.close()
-end
-
-dap.adapters.gdb = {
-  type = "executable",
-  command = "gdb",
-  args = { "--interpreter=dap", "--eval-command", "set print pretty on" }
 }
 
 EOF
