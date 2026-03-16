@@ -66,9 +66,17 @@ vim.lsp.config("tinymist", {
 	}
 })
 vim.lsp.config("vtsls", {})
+vim.lsp.config("html", {})
+
+vim.lsp.enable("clangd")
+vim.lsp.enable("tinymist")
+vim.lsp.enable("vtsls")
+vim.lsp.enable("html")
+
+require'nvim-web-devicons'.setup {}
 
 require'nvim-treesitter.configs'.setup {
-	ensure_installed = { "c", "typst", "typescript" },
+	ensure_installed = { "c", "typst", "javascript", "css", "typescript", "html" },
 	highlight = { enable = true },
 }
 

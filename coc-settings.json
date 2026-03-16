@@ -3,5 +3,15 @@
 	"clangd.arguments": [
 		"--function-arg-placeholders=0"
 	],
-	"html.validate.styles": false
+	"html.validate.styles": false,
+	"languageserver": {
+		"tinymist": {
+			"command": "tinymist",
+			"filetypes": ["typst"],
+			"settings": {
+				"formatterMode": "typstyle",
+				"exportPdf": "onSave"
+			}
+		}
+  }
 }
