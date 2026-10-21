@@ -13,15 +13,12 @@ Plug 'nvim-tree/nvim-web-devicons'
 
 Plug 'williamboman/mason.nvim'
 
-Plug 'ephf/quark.vim'
-
 Plug 'lewis6991/gitsigns.nvim'
 
 call plug#end()
 
-se nu rnu ts=4 sw=4 ai si nohls mouse=
-colo kanagawa-dragon
-hi Error gui=bold,underline
+se nu rnu ts=4 sw=4 ai si nohls mouse= noshowmode
+colo kanagawa
 hi Normal guibg=NONE
 
 nn <s-u> <c-r>
@@ -35,7 +32,7 @@ nn <tab> <c-w>w
 tno <tab> <c-w>w
 
 autocmd FileType typst setl spell
-autocmd FileType cpp setl filetype=c
+autocmd BufRead,BufNewFile *.h setl filetype=c
 
 function! CheckBackspace() abort
   let col = col('.') - 1
@@ -52,9 +49,6 @@ nn <silent><nowait> gy <Plug>(coc-type-definition)
 nn fd <cmd>Telescope find_files<cr>
 nn fs <cmd>Telescope live_grep<cr>
 
-set noshowmode
-set exrc
-
 lua << EOF
 
 vim.lsp.config("clangd", {})
@@ -67,16 +61,20 @@ vim.lsp.config("tinymist", {
 })
 vim.lsp.config("vtsls", {})
 vim.lsp.config("html", {})
+vim.lsp.config("rust-analyzer", {})
+vim.lsp.config("pyright", {})
 
 vim.lsp.enable("clangd")
 vim.lsp.enable("tinymist")
 vim.lsp.enable("vtsls")
 vim.lsp.enable("html")
+vim.lsp.enable("rust-analyzer")
+vim.lsp.enable("pyright")
 
 require'nvim-web-devicons'.setup {}
 
 require'nvim-treesitter.configs'.setup {
-	ensure_installed = { "c", "typst", "javascript", "css", "typescript", "html" },
+	ensure_installed = { "c", "cpp", "typst", "javascript", "css", "typescript", "html", "rust", "python" },
 	highlight = { enable = true },
 }
 
